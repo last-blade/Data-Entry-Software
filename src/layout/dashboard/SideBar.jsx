@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Separator } from "../../components/Separator"
 import { SheetIcon as Sheets, Star, LogOut, Plus, User } from 'lucide-react'
 import { Button } from "../../components/Button"
+import { useNavigate } from "react-router-dom";
 
 const mockSheets = [
   { id: 1, name: "Sales Report Q1", lastEdited: "2 hours ago", starred: true },
@@ -13,6 +14,7 @@ const mockSheets = [
 ]
 
 function SideBar() {
+  const navigate = useNavigate();
   const [showStarred, setShowStarred] = useState(false)
   const sidebarSheets = mockSheets.slice(0, 3)
     const handleLogout = () => {
@@ -93,7 +95,7 @@ function SideBar() {
         </div>
 
         {/* Logout button */}
-        <div className="p-4 border-t">
+        <div className="p-4 border-t" onClick={() => navigate("/login")}>
           <Button
             variant="outline"
             className="w-full gap-2"
